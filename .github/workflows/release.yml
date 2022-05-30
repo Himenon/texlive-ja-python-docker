@@ -1,0 +1,29 @@
+name: Release Workflow
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - uses: ./.github/actions/initialize
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
+      - name: Docker Build & Push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/himenon/texlive-ja:latest,ghcr.io/himenon/texlive-ja:${{ steps.vars.outputs.docker_tag }}

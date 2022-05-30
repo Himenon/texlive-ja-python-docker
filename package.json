@@ -1,0 +1,72 @@
+{
+  "name": "@himenon/texlive-ja",
+  "version": "1.0.0",
+  "description": "texlive ja",
+  "keywords": [
+    "typescript"
+  ],
+  "homepage": "https://github.com/Himenon/texlive-ja-docker#readme",
+  "bugs": {
+    "url": "https://github.com/Himenon/texlive-ja-docker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Himenon/texlive-ja-docker.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Himenon",
+    "email": "k.himeno314@gmail.com",
+    "url": "https://github.com/Himenon"
+  },
+  "sideEffects": false,
+  "main": "./lib/$cjs/index.js",
+  "module": "./lib/$esm/index.js",
+  "types": "./lib/$types/index.d.ts",
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs}": [
+      "prettier --write"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "Dockerfile"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "lint-staged": "^12.4.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.6.0",
+    "semantic-release": "^19.0.2",
+    "simple-git-hooks": "^2.8.0",
+    "sort-package-json": "^1.57.0"
+  },
+  "engines": {
+    "pnpm": ">=7"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
