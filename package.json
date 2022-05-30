@@ -1,17 +1,19 @@
 {
-  "name": "@himenon/texlive-ja",
+  "name": "@himenon/texlive-ja-python",
   "version": "1.0.0",
   "description": "texlive ja",
   "keywords": [
-    "typescript"
+    "texlive",
+    "japanese",
+    "python"
   ],
-  "homepage": "https://github.com/Himenon/texlive-ja-docker#readme",
+  "homepage": "https://github.com/Himenon/texlive-ja-python-docker#readme",
   "bugs": {
-    "url": "https://github.com/Himenon/texlive-ja-docker/issues"
+    "url": "https://github.com/Himenon/texlive-ja-python-docker/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Himenon/texlive-ja-docker.git"
+    "url": "git@github.com:Himenon/texlive-ja-python-docker.git"
   },
   "license": "MIT",
   "author": {

@@ -1,14 +1,14 @@
-# @himenon/texlive-ja
+# @himenon/texlive-ja-python
 
 ```bash
-docker run --rm -v $(pwd):/workdir ghcr.io/himenon/texlive-ja uplatex article.tex
-docker run --rm -v $(pwd):/workdir ghcr.io/himenon/texlive-ja dvipdfmx article.dvi
+docker run --rm -v $(pwd):/workdir ghcr.io/himenon/texlive-ja-python uplatex article.tex
+docker run --rm -v $(pwd):/workdir ghcr.io/himenon/texlive-ja-python dvipdfmx article.dvi
 ```
 
 ## LICENCE
 
-[@himenon/texlive-ja](https://github.com/Himenon/texlive-ja)・MIT
+[@himenon/texlive-ja-python](https://github.com/Himenon/texlive-ja-python)・MIT
 
 ## Inspired
 
-- https://github.com/wtsnjp/texlive-ja
+- https://github.com/wtsnjp/texlive-ja-python
