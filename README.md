@@ -8,7 +8,3 @@ docker run --rm -v $(pwd):/workdir ghcr.io/himenon/texlive-ja-python dvipdfmx ar
 ## LICENCE
 
 [@himenon/texlive-ja-python](https://github.com/Himenon/texlive-ja-python)・MIT
-
-## Inspired
-
-- https://github.com/wtsnjp/texlive-ja-python
