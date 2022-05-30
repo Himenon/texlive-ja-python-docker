@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/himenon/texlive-ja:latest,ghcr.io/himenon/texlive-ja:${{ steps.vars.outputs.docker_tag }}
+          tags: ghcr.io/himenon/texlive-ja-python:latest,ghcr.io/himenon/texlive-ja-python:${{ steps.vars.outputs.docker_tag }}

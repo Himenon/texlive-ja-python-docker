@@ -1,37 +1,18 @@
-FROM debian:11.3-slim AS installer
-ENV PATH /usr/local/bin/texlive:$PATH
-WORKDIR /install-tl-unx
-RUN apt-get update
-RUN apt-get install -y \
-  perl \
-  wget \
-  xz-utils \
-  fontconfig
-COPY ./texlive.profile ./
-RUN wget -nv https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-RUN tar -xzf ./install-tl-unx.tar.gz --strip-components=1
-RUN ./install-tl --profile=texlive.profile
-RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
-RUN tlmgr install \
-  collection-fontsrecommended \
-  collection-langjapanese \
-  collection-latexextra \
-  latexmk \
-  minted
+FROM ghcr.io/himenon/texlive-ja
 
-RUN tlmgr --version
-RUN dvipdfmx --version
-RUN uplatex --version
+RUN apt update && \
+    apt -y upgrade 
 
-FROM debian:11.3-slim
-ENV PATH /usr/local/bin/texlive:$PATH
-WORKDIR /workdir
-COPY --from=installer /usr/local/texlive /usr/local/texlive
-RUN apt-get update \
-  && apt-get install -y \
-    perl \
-    wget \
-    curl \
-  && rm -rf /var/lib/apt/lists/*
-RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
-CMD ["bash"]
+RUN apt install -y build-essential libbz2-dev libdb-dev \
+    libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
+    libncursesw5-dev libsqlite3-dev libssl-dev \
+    zlib1g-dev uuid-dev
+
+RUN wget https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tgz
+RUN tar -zxvf Python-3.10.4.tgz
+RUN cd Python-3.10.4 && \
+    ./configure && \
+    make && \
+    make install
+
+RUN pip3 install Pygments
